@@ -1218,7 +1218,7 @@ ucp_am_handler_common(ucp_worker_h worker, ucp_am_hdr_t *am_hdr, size_t hdr_size
         desc->flags &= ~UCP_RECV_DESC_FLAG_AM_CB_INPROGRESS;
         return desc_status;
     } else if (!(am_flags & UCT_CB_PARAM_FLAG_DESC)) {
-        ucp_recv_desc_release(desc);
+        ucp_recv_desc_release(desc, NULL);
     }
 
     return UCS_OK;
