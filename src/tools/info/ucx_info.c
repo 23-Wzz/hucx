@@ -94,7 +94,7 @@ int main(int argc, char **argv)
 {
 #if ENABLE_UCG
     char *collective_type_name = "allreduce";
-    ucg_group_member_index_t peer_count[4] = {0};
+    ucg_group_member_index_t peer_count[4];
     ucg_group_member_index_t root_index = 0;
     ucg_group_member_index_t my_index = 0;
     char *planner_name = NULL;
