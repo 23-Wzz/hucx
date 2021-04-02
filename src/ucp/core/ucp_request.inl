@@ -709,7 +709,7 @@ ucp_recv_desc_release(ucp_recv_desc_t *rdesc, uct_iface_h iface)
     ucs_trace_req("release receive descriptor %p", rdesc);
     if (ucs_unlikely(rdesc->flags & UCP_RECV_DESC_FLAG_UCT_DESC)) {
         /* uct desc is slowpath */
-        uct_recv_desc_t *uct_desc =
+        uct_recv_desc_t *uct_desc = (uct_recv_desc_t*)
                 UCS_PTR_BYTE_OFFSET(rdesc, -rdesc->uct_desc_offset);
         if (ucs_unlikely(rdesc->flags & UCP_RECV_DESC_FLAG_UCT_DESC_SHARED)) {
             /*
