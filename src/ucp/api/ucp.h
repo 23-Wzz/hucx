@@ -152,8 +152,10 @@ enum ucp_feature {
     UCP_FEATURE_STREAM       = UCS_BIT(5),  /**< Request stream support */
     UCP_FEATURE_AM           = UCS_BIT(6),  /**< Request Active Message
                                                  support */
-    UCP_FEATURE_GROUPS       = UCS_BIT(7)   /**< Request collective
+    UCP_FEATURE_GROUPS       = UCS_BIT(7),  /**< Request collective
                                                  operations support */
+    UCP_FEATURE_PAGG         = UCS_BIT(8)   /**< Request packet aggregation
+                                                 support */
 };
 
 
@@ -172,7 +174,8 @@ enum ucp_worker_params_field {
     UCP_WORKER_PARAM_FIELD_EVENT_FD     = UCS_BIT(4), /**< External event file
                                                            descriptor */
     UCP_WORKER_PARAM_FIELD_FLAGS        = UCS_BIT(5), /**< Worker flags */
-    UCP_WORKER_PARAM_FIELD_NAME         = UCS_BIT(6)  /**< Worker name */
+    UCP_WORKER_PARAM_FIELD_NAME         = UCS_BIT(6), /**< Worker name */
+    UCP_WORKER_PARAM_FIELD_UUID         = UCS_BIT(7)  /**< Worker UUID */
 };
 
 
@@ -1269,6 +1272,14 @@ typedef struct ucp_worker_params {
      * default unique name will be created for you.
      */
     const char              *name;
+
+    /**
+     * Worker UUID.
+     * This value is optional.
+     * If @ref UCP_WORKER_PARAM_FIELD_UUID is not set in the field_mask, the
+     * value of this field will be generated randomly.
+     */
+    uint64_t                uuid;
 
 } ucp_worker_params_t;
 

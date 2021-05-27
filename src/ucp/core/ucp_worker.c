@@ -2280,6 +2280,10 @@ ucs_status_t ucp_worker_create(ucp_context_h context,
     worker->user_data = UCP_PARAM_VALUE(WORKER, params, user_data, USER_DATA,
                                         NULL);
 
+    if (params->field_mask & UCP_WORKER_PARAM_FIELD_NAME) {
+        worker->uuid = params->uuid;
+    }
+
     if ((params->field_mask & UCP_WORKER_PARAM_FIELD_NAME) &&
         (params->name != NULL)) {
         ucs_snprintf_zero(worker->name, UCP_ENTITY_NAME_MAX, "%s",
