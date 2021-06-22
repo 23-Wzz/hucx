@@ -41,6 +41,7 @@ noinst_HEADERS = \
 	dt/dt.h \
 	dt/dt.inl \
 	dt/dt_contig.h \
+	dt/dt_strided.h \
 	dt/dt_iov.h \
 	dt/dt_generic.h \
 	pagg/pagg.h \
